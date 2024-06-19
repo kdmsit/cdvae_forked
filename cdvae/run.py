@@ -11,7 +11,7 @@ from omegaconf import DictConfig, OmegaConf
 from pytorch_lightning import seed_everything, Callback
 from pytorch_lightning.callbacks import (EarlyStopping,LearningRateMonitor,ModelCheckpoint)
 from pytorch_lightning.loggers import WandbLogger
-from cdvae.common.utils import log_hyperparameters, PROJECT_ROOT
+from common.utils import log_hyperparameters, PROJECT_ROOT
 
 
 def build_callbacks(cfg: DictConfig) -> List[Callback]:
