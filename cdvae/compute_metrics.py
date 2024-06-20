@@ -318,7 +318,7 @@ def main(args):
             os.makedirs(gen_path)
         for i in range(len(gen_crys)):
             crystal = gen_crys[i]
-            crystal.structure.to(gen_path + str(i) + ".cif")
+            crystal.structure.to(Path(gen_path + str(i) + ".cif"))
         print("Saved the generated Images...[DONE]")
 
 
