@@ -102,7 +102,7 @@ def run(cfg: DictConfig) -> None:
                          progress_bar_refresh_rate=cfg.logging.progress_bar_refresh_rate,resume_from_checkpoint=ckpt,
                          **cfg.train.pl_trainer)
 
-    # log_hyperparameters(trainer=trainer, model=model, cfg=cfg)
+    log_hyperparameters(trainer=trainer, model=model, cfg=cfg)
 
     hydra.utils.log.info("Starting training!")
     trainer.fit(model=model, datamodule=datamodule)
