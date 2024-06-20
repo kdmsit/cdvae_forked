@@ -312,7 +312,7 @@ def main(args):
         gen_crys = p_map(lambda x: Crystal(x), crys_array_list)
 
         print("Save the generated Images...")
-        gen_path = os.path.join(args.root_path, 'generated')
+        gen_path = os.path.join(args.root_path, 'generated/')
         print("Generation Path : ",gen_path)
         if not os.path.exists(gen_path):
             os.makedirs(gen_path)
