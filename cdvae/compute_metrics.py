@@ -319,7 +319,7 @@ def main(args):
         for i in range(len(gen_crys)):
             crystal = gen_crys[i]
             cif_path = os.path.join(gen_path + str(i) + ".cif")
-            crystal.structure.to(cif_path)
+            crystal.structure.to(filename=cif_path)
         print("Saved the generated Images...[DONE]")
 
 
