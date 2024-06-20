@@ -53,19 +53,13 @@ def load_config(model_path):
 def load_model(model_path, load_data=False, testing=True):
     with initialize_config_dir(str(model_path)):
         cfg = compose(config_name='hparams')
-        model = hydra.utils.instantiate(
-            cfg.model,
-            optim=cfg.optim,
-            data=cfg.data,
-            logging=cfg.logging,
-            _recursive_=False,
-        )
-        print()
+        model = hydra.utils.instantiate(cfg.model, optim=cfg.optim, data=cfg.data,
+                                        logging=cfg.logging, _recursive_=False)
         ckpts = list(model_path.glob('*.ckpt'))
         if len(ckpts) > 0:
-            ckpt_epochs = np.array(
-                [int(ckpt.parts[-1].split('-')[0].split('=')[1]) for ckpt in ckpts])
+            ckpt_epochs = np.array([int(ckpt.parts[-1].split('-')[0].split('=')[1]) for ckpt in ckpts])
             ckpt = str(ckpts[ckpt_epochs.argsort()[-1]])
+        print(ckpt)
         model = model.load_from_checkpoint(ckpt)
         model.lattice_scaler = torch.load(model_path / 'lattice_scaler.pt')
         model.scaler = torch.load(model_path / 'prop_scaler.pt')
