@@ -297,8 +297,7 @@ def main(args):
 
     if 'recon' in args.tasks:
         recon_file_path = get_file_paths(args.root_path, 'recon', args.label)
-        crys_array_list, true_crystal_array_list = get_crystal_array_list(
-            recon_file_path)
+        crys_array_list, true_crystal_array_list = get_crystal_array_list(recon_file_path)
         pred_crys = p_map(lambda x: Crystal(x), crys_array_list)
         gt_crys = p_map(lambda x: Crystal(x), true_crystal_array_list)
 
@@ -313,7 +312,7 @@ def main(args):
         gen_crys = p_map(lambda x: Crystal(x), crys_array_list)
 
         print("Save the generated Images...")
-        gen_path = str(args.root_path) + '/generated/'
+        gen_path = os.path.join(args.root_path, 'generated')
         print("Generation Path : ",gen_path)
         if not os.path.exists(gen_path):
             os.makedirs(gen_path)
